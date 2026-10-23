@@ -1,0 +1,39 @@
+.back-link { font-size: .9rem; text-decoration: none; }
+.meta-block {
+margin: 1.5rem 0;
+padding: .8rem 1rem;
+border-left: 3px solid var(--accent);
+background: var(--soft);
+font-size: .95rem;
+}
+.external-links { display: flex; gap: 1rem; margin-top: 1.5rem; font-weight: 500; }
+footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--soft); color: var(--muted); font-size: .9rem; }
+
+
+← Back to Portfolio
+
+<h2>System Architecture</h2>
+<p>The monitoring rig continuously samples key physical properties from the hydraulic system:</p>
+<ul>
+  <li><strong>Differential Pressure Transducers (4–20 mA):</strong> Installed across the inline high-pressure filter element to track pressure drop ($\Delta P$).</li>
+  <li><strong>Oil Temperature & Reservoir Level (PT100 / Float Switch):</strong> Monitored to prevent thermal breakdown of hydraulic fluid and detect tank leakage.</li>
+  <li><strong>Vibration Sensor (Piezoelectric Accelerometer):</strong> Mounted on the pump housing to monitor axial and radial vibration profiles.</li>
+</ul>
+
+<h2>Data Acquisition & Logic</h2>
+<p>Signals are captured via RS485 Modbus RTU and processed by an ESP32 microcontroller acting as an edge node:</p>
+<ul>
+  <li><strong>Filter Clogging Alert:</strong> Triggers an early warning when differential pressure exceeds $2.5\text{ bar}$, signaling required maintenance before the bypass valve opens.</li>
+  <li><strong>Thermal Interlock:</strong> Sends a digital trip signal to the main pump contactor if oil temperature passes $65^\circ\text{C}$.</li>
+  <li><strong>Telemetry:</strong> Published via MQTT over Ethernet/Wi-Fi to an on-premise Grafana engine for live trend visualization and logging.</li>
+</ul>
+
+<h2>Mechanical & CAD Documentation</h2>
+<p>Detailed 2D schematics of the modified hydraulic manifold were drafted in AutoCAD, including mounting brackets engineered for mechanically isolated accelerometer placement on the pump housing.</p>
+
+<div class="external-links">
+  <a href="#" target="_blank" rel="noopener">GitHub Repository</a>
+  <a href="#" target="_blank" rel="noopener">Schematics & CAD (PDF)</a>
+  <a href="#" target="_blank" rel="noopener">Demo Video</a>
+</div>
+
