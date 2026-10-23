@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexandre Tambo – Automation engineering portfolio</title>
+<meta name="description" content="Mechanical engineering student building industrial automation, condition monitoring and lift-planning tools.">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --ink: #1b2330;
+    --muted: #556070;
+    --line: #1b2330;
+    --soft: #d5dae2;
+    --accent: #1f4fd8;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141c;
+      --ink: #e6eaf0;
+      --muted: #9aa5b5;
+      --line: #e6eaf0;
+      --soft: #2a3342;
+      --accent: #7aa2ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 .25rem; letter-spacing: -.01em; }
+  h2 { font-size: 1.25rem; margin: 2.75rem 0 .75rem; }
+  h3 { font-size: 1.05rem; margin: 0 0 .15rem; }
+  p { margin: 0 0 1rem; max-width: 40rem; }
+
+  /* Title block, like the corner of an engineering drawing */
+  .titleblock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid var(--line);
+    margin-bottom: 2rem;
+  }
+  .titleblock > div { padding: .6rem .9rem; border: 1px solid var(--line); }
+  .titleblock .wide { grid-column: 1 / -1; padding: 1rem .9rem; }
+  .titleblock small { display: block; color: var(--muted); font-size: .8rem; }
+  .role { color: var(--muted); margin: 0; }
+  @media (max-width: 34rem) {
+    .titleblock { grid-template-columns: 1fr; }
+    h1 { font-size: 1.7rem; }
+  }
+
+  .project { padding: 1rem 0; border-top: 1px solid var(--soft); }
+  .project p { margin-bottom: .4rem; }
+  .meta { color: var(--muted); font-size: .9rem; margin: 0; }
+  .links { display: flex; gap: 1rem; margin-top: .35rem; font-size: .95rem; }
+
+  dl { display: grid; grid-template-columns: 9rem 1fr; gap: .5rem 1rem; margin: 0; }
+  dt { font-weight: 600; }
+  dd { margin: 0; }
+  @media (max-width: 34rem) { dl { grid-template-columns: 1fr; gap: 0; } dd { margin-bottom: .75rem; } }
+
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--soft); color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- EDIT: replace every [bracketed] item and every href="#" -->
+
+  <header class="titleblock">
+    <div class="wide">
+      <h1>Alexandre Tambo</h1>
+      <p class="role">Mechanical engineering student building automation and monitoring systems for machines.</p>
+    </div>
+    <div><small>Focus</small>Industrial automation, maintenance, lifting</div>
+    <div><small>Based in</small>Luanda, Angola</div>
+    <div><small>Study</small>Mechanical Engineering, ISPTEC</div>
+    <div><small>Contact</small><a href="mailto:you@example.com">you@example.com</a></div>
+  </header>
+
+  <section>
+    <p>I’m a mechanical engineering student who also writes the software for machines. I work on PLC control, sensor-based condition monitoring and lift planning, and I draw it all in CAD. I finished the 42 school software development course, so I’m comfortable in C, Linux and networking.</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <article class="project">
+      <h3>Sequence-controlled conveyor line</h3>
+      <p>PLC program with an HMI, fault handling and a state diagram, tested in simulation.</p>
+      <p class="meta">Tools: [CODESYS / TIA Portal], [Factory I/O]. Status: [in progress]</p>
+      <div class="links"><a href="#">Repository</a><a href="#">Demo video</a><a href="#">Write-up</a></div>
+    </article>
+
+    <article class="project">
+      <h3>Condition monitoring rig</h3>
+      <p>Accelerometer on a motor with an adjustable imbalance. FFT analysis, alarm thresholds and a live dashboard.</p>
+      <p class="meta">Tools: ESP32, [ADXL345], Python, MQTT, [Grafana]. Status: [in progress]</p>
+      <div class="links"><a href="#">Repository</a><a href="#">Demo video</a><a href="#">Write-up</a></div>
+    </article>
+
+    <article class="project">
+      <h3>Load monitoring and lift-planning tool</h3>
+      <p>Bench-scale load cell with live load against rated capacity, plus a calculator for sling angles and load distribution. Educational use only.</p>
+      <p class="meta">Tools: ESP32, HX711, [web app]. Status: [planned]</p>
+      <div class="links"><a href="#">Repository</a><a href="#">Demo video</a><a href="#">Write-up</a></div>
+    </article>
+
+    <article class="project">
+      <h3>CAD and drawings</h3>
+      <p>3D models and detail drawings of my own rigs, a spreader beam study and parametric blocks.</p>
+      <p class="meta">Tools: [AutoCAD], [SolidWorks / Fusion 360 / FreeCAD]. Status: [in progress]</p>
+      <div class="links"><a href="#">Gallery</a><a href="#">Drawings (PDF)</a></div>
+    </article>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl>
+      <dt>Automation</dt><dd>PLC programming (Ladder, Structured Text), HMI, GRAFCET, PID tuning</dd>
+      <dt>Embedded</dt><dd>ESP32, Arduino, sensors and actuators, MQTT, Modbus</dd>
+      <dt>Software</dt><dd>C, Python, Linux, Git</dd>
+      <dt>Design</dt><dd>AutoCAD, 3D modelling, detail drawings, lift plans</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <dl>
+      <dt>[Year – present]</dt><dd>Lifting and rigging engineer trainee at [company]. Lift planning and drawings.</dd>
+      <dt>[Year]</dt><dd>Industrial maintenance internship at [company].</dd>
+      <dt>[Year]</dt><dd>42 school, software development course completed.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p><a href="mailto:you@example.com">you@example.com</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a> · <a href="#">Download CV (PDF)</a></p>
+  </section>
+
+  <footer>© 2026 Alexandre Tambo</footer>
+</main>
+</body>
+</html>
