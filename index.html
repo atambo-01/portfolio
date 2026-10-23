@@ -56,7 +56,7 @@
     h1 { font-size: 1.7rem; }
   }
 
-  .project { padding: 1rem 0; border-top: 1px solid var(--soft); }
+  .project { padding: 1rem 0; border-top: 1px solid var(--soft); display: none; }
   .project p { margin-bottom: .4rem; }
   .meta { color: var(--muted); font-size: .9rem; margin: 0; }
   .links { display: flex; gap: 1rem; margin-top: .35rem; font-size: .95rem; }
@@ -66,6 +66,7 @@
   dd { margin: 0; }
   @media (max-width: 34rem) { dl { grid-template-columns: 1fr; gap: 0; } dd { margin-bottom: .75rem; } }
 
+  #no-projects { color: var(--muted); font-style: italic; display: none; padding: 1rem 0; border-top: 1px solid var(--soft); }
   footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--soft); color: var(--muted); font-size: .9rem; }
 </style>
 </head>
@@ -90,40 +91,41 @@
   <section>
     <h2>Projects</h2>
 
-    <article class="project">
+    <div id="no-projects">No projects available yet.</div>
+
+    <article class="project" data-file="projects/sequence-conveyor.html">
       <h3>Sequence-controlled conveyor line</h3>
       <p>PLC program with an HMI, fault handling and a state diagram, tested in simulation.</p>
-      <p class="meta">Tools: CODESYS / TIA Portal, Factory I/O. Status: in progress</p>
-      <div class="links">
-        <a href="projects/sequence-conveyor.html">View Project Details →</a>
-      </div>
+      <p class="meta">Tools: CODESYS / TIA Portal, Factory I/O. Status: In progress</p>
+      <div class="links"><a href="projects/sequence-conveyor.html">View Project Details →</a></div>
     </article>
 
-    <article class="project">
+    <article class="project" data-file="projects/condition-monitoring.html">
       <h3>Condition monitoring rig</h3>
       <p>Accelerometer on a motor with an adjustable imbalance. FFT analysis, alarm thresholds and a live dashboard.</p>
-      <p class="meta">Tools: ESP32, ADXL345, Python, MQTT, Grafana. Status: in progress</p>
-      <div class="links">
-        <a href="projects/condition-monitoring.html">View Project Details →</a>
-      </div>
+      <p class="meta">Tools: ESP32, ADXL345, Python, MQTT, Grafana. Status: In progress</p>
+      <div class="links"><a href="projects/condition-monitoring.html">View Project Details →</a></div>
     </article>
 
-    <article class="project">
+    <article class="project" data-file="projects/load-monitoring.html">
       <h3>Load monitoring and lift-planning tool</h3>
-      <p>Bench-scale load cell with live load against rated capacity, plus a calculator for sling angles and load distribution. Educational use only.</p>
-      <p class="meta">Tools: ESP32, HX711, Web App. Status: planned</p>
-      <div class="links">
-        <a href="projects/load-monitoring.html">View Project Details →</a>
-      </div>
+      <p>Bench-scale load cell with live load against rated capacity, plus a calculator for sling angles and load distribution.</p>
+      <p class="meta">Tools: ESP32, HX711, Web App. Status: Planned</p>
+      <div class="links"><a href="projects/load-monitoring.html">View Project Details →</a></div>
     </article>
 
-    <article class="project">
+    <article class="project" data-file="projects/cad-drawings.html">
       <h3>CAD and drawings</h3>
       <p>3D models and detail drawings of my own rigs, a spreader beam study and parametric blocks.</p>
-      <p class="meta">Tools: AutoCAD, SolidWorks / Fusion 360 / FreeCAD. Status: in progress</p>
-      <div class="links">
-        <a href="projects/cad-drawings.html">View Project Details →</a>
-      </div>
+      <p class="meta">Tools: AutoCAD, SolidWorks / Fusion 360 / FreeCAD. Status: In progress</p>
+      <div class="links"><a href="projects/cad-drawings.html">View Project Details →</a></div>
+    </article>
+
+    <article class="project" data-file="projects/hydraulic-hpu-monitoring.html">
+      <h3>Hydraulic Power Unit (HPU) Condition Monitoring System</h3>
+      <p>Retrofitted condition-monitoring rig tracking oil temperature, line pressure, and pump vibration.</p>
+      <p class="meta">Tools: ESP32, MAX31855, Pressure Transducers, MQTT, Node-RED. Status: In progress</p>
+      <div class="links"><a href="projects/hydraulic-hpu-monitoring.html">View Project Details →</a></div>
     </article>
   </section>
 
@@ -153,5 +155,29 @@
 
   <footer>© 2026 Alexandre Tambo</footer>
 </main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const projectElements = document.querySelectorAll(".project");
+    let visibleCount = 0;
+
+    for (const el of projectElements) {
+      const fileUrl = el.getAttribute("data-file");
+      try {
+        const response = await fetch(fileUrl, { method: "HEAD" });
+        if (response.ok) {
+          el.style.display = "block";
+          visibleCount++;
+        }
+      } catch (e) {
+        // File does not exist, remains hidden
+      }
+    }
+
+    if (visibleCount === 0) {
+      document.getElementById("no-projects").style.display = "block";
+    }
+  });
+</script>
 </body>
 </html>
